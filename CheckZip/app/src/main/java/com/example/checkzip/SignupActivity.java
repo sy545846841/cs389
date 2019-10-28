@@ -33,7 +33,7 @@ public class SignupActivity extends AppCompatActivity {
     String email;
     String password;
     String repassword;
-    Integer zip;
+    String zip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +44,7 @@ public class SignupActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         signupBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 if(validate()){
                     String user_email = userEmail.getText().toString().trim();
                     String user_password = userPassword.getText().toString().trim();
@@ -91,8 +91,8 @@ public class SignupActivity extends AppCompatActivity {
         password = userPassword.getText().toString();
         repassword = reenterPassword.getText().toString();
         email = userEmail.getText().toString();
-        zip = Integer.parseInt(zipcode.getText().toString());
-        if(firstname.isEmpty() || lastname.isEmpty() || username.isEmpty()|| password.isEmpty() || repassword.isEmpty() || email.isEmpty() || zip.toString().isEmpty() ){
+        zip = zipcode.getText().toString();
+        if(firstname.isEmpty() || lastname.isEmpty() || username.isEmpty()|| password.isEmpty() || repassword.isEmpty() || email.isEmpty() || zip.isEmpty() ){
             Toast.makeText(this, "Please enter all the details", Toast.LENGTH_SHORT).show();
         }else if (password.compareTo(repassword)!=0){
             Toast.makeText(this, "Password and Re-enter Password is not matched", Toast.LENGTH_SHORT).show();

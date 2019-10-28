@@ -62,6 +62,9 @@ public class LoginActivity extends AppCompatActivity {
 
     }
     private void validate(String userName, String userPassword){
+        if(userName.isEmpty() ||userPassword.isEmpty()){
+            Toast.makeText(LoginActivity.this, "Please enter login information", Toast.LENGTH_SHORT).show();
+        }else{
 
         firebaseAuth.signInWithEmailAndPassword(userName, userPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
@@ -73,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
                 }
             }
-        });
+        });}
     }
     /*private void checkEmailVerification() {
         FirebaseUser firebaseUser = firebaseAuth.getInstance().getCurrentUser();
